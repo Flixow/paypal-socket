@@ -15,7 +15,7 @@ paypal.payment.list({}, (error, response) => {
         update_time,
         intent,
         state,
-        ppayer_info
+        payer_info
       }
     });
 

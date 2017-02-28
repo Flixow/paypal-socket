@@ -137,5 +137,9 @@ endpoints:
 config:
   client_id:
     value: <Your client_id in Paypal>
+    description: "You can get this value in paypal developer dashboard in 'My Apps & Credentials' section. For more informations see https://developer.paypal.com/docs/integration/direct/make-your-first-call/"
+    prompt: true
   client_secret:
     value: <Your client_secret in Paypal>
+    description: "You can get this value in paypal developer dashboard in 'My Apps & Credentials' section. For more informations see https://developer.paypal.com/docs/integration/direct/make-your-first-call/"
+    prompt: true

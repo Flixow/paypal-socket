@@ -1,0 +1,141 @@
+name: Paypal
+description: Socket for PayPal
+
+endpoints:
+  payment_create_with_paypal:
+    description: Create payment with paypal
+    file: scripts/payment_create_with_paypal.js
+    parameters:
+      paymentJsonData:
+        type: string
+        description: "Payment data in JSON format"
+        example: '{ "intent": "sale", "payer": { "payment_method": "paypal" }, "redirect_urls": { "return_url": "https://api.syncano.rocks/v2/instances/syncano-sockets/endpoints/sockets/paypal/payment_execute/", "cancel_url": "http://cancel.url" }, "transactions": [{ "item_list": { "items": [{ "name": "item1", "sku": "item", "price": "1.00", "currency": "USD", "quantity": 1 }] }, "amount": { "currency": "USD", "total": "1.00" }, "description": "This is the payment description." }] }'
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 201
+          description: Success
+          example: Hello Tyler Durden!
+        -
+          exit_code: 404
+          description: Failed
+          example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
+  payment_create_with_credit_card:
+    description: Create payment with credit card
+    file: scripts/payment_create_with_credit_card.js
+    parameters:
+      paymentJsonData:
+        type: string
+        description: "Payment data in JSON format"
+        example: '{ "intent": "sale", "payer": { "payment_method": "credit_card", "funding_instruments": [{ "credit_card": { "type": "visa", "number": "4063332575284750", "expire_month": "03", "expire_year": "2022", "cvv2": "874", "first_name": "Joe", "last_name": "Shopper", "billing_address": { "line1": "52 N Main ST", "city": "Johnstown", "state": "OH", "postal_code": "43210", "country_code": "US" } } }] }, "transactions": [{ "amount": { "total": "7", "currency": "USD", "details": { "subtotal": "5", "tax": "1", "shipping": "1" } }, "description": "This is the payment transaction description." }] }'
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 201
+          description: Success
+          example: Hello Tyler Durden!
+        -
+          exit_code: 404
+          description: Failed
+          example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
+  payment_execute:
+    description: Execute approved payment
+    file: scripts/payment_execute.js
+    parameters:
+      PayerID:
+        type: string
+        description: "Payer ID"
+        example: "4TYTMXM27QEF6"
+      paymentId:
+        type: string
+        description: "Payment ID"
+        example: "PAY-62567874WB571642PLC2V63A"
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 201
+          description: Success
+          example: Hello Tyler Durden!
+        -
+          exit_code: 404
+          description: Failed
+          example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
+  payments_list:
+    description: Get list of all payments with basic informations
+    file: scripts/payments_list.js
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 201
+          description: Success
+          example: "[ { id: 'PAY-64644582DN4640416LC2DLSI', create_time: '2017-02-27T14:20:57Z', update_time: '2017-02-27T14:20:57Z', intent: 'sale', state: 'approved' }, { id: 'PAY-20M87407NB324994SLC2DKDQ', create_time: '2017-02-27T14:17:50Z', update_time: '2017-02-27T14:17:50Z', intent: 'sale', state: 'approved' } ]"
+        -
+          exit_code: 404
+          description: Failed
+          example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
+  payment_details:
+    description: Get all information about payment based on ID
+    file: scripts/payment_details.js
+    parameters:
+      paymentId:
+        type: string
+        description: "Payment ID"
+        example: "PAY-64644582DN4640416LC2DLSI"
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 201
+          description: Success
+          example: "{ id: 'PAY-64644582DN4640416LC2DLSI', state: 'approved', cart: '290534519S964102S', payer: {  payment_method: 'paypal', status: 'VERIFIED', payer_info: {  email: 'sampleEmail-buyer@gmail.com', first_name: 'test', last_name: 'buyer', payer_id: '4TYTMXM27QEF6', phone: '2269420414', country_code: 'PL' } } }"
+        -
+          exit_code: 404
+          description: Failed
+          example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
+  payout_create:
+    description: I do not know for now
+    file: scripts/payout_create.js
+    parameters:
+      senderBatchId:
+        type: string
+        description: "Batch ID"
+        example: "gtmigymsoxfglj714i"
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 201
+          description: Success
+          example: "{ batch_header: { payout_batch_id: '4W466DWNNJ59S', batch_status: 'PENDING', sender_batch_header: { email_subject: 'You have a payment', sender_batch_id: 'gtmigymsoxfglj714i' } }, links: [ { href: 'https://api.sandbox.paypal.com/v1/payments/payouts/4W466DWNNJ59S', rel: 'self', method: 'GET' } ], httpStatusCode: 201 }"
+        -
+          exit_code: 404
+          description: Failed
+          example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
+  payout_get:
+    description: I do not know for now
+    file: scripts/payout_get.js
+    parameters:
+      payoutId:
+        type: string
+        description: "Payout ID"
+        example: "4W466DWNNJ59S"
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 201
+          description: Success
+          example: "{ id: 'PAY-64644582DN4640416LC2DLSI', state: 'approved', cart: '290534519S964102S', payer: {  payment_method: 'paypal', status: 'VERIFIED', payer_info: {  email: 'sampleEmail-buyer@gmail.com', first_name: 'test', last_name: 'buyer', payer_id: '4TYTMXM27QEF6', phone: '2269420414', country_code: 'PL' } } }"
+        -
+          exit_code: 404
+          description: Failed
+          example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
+config:
+  client_id:
+    value: <Your client_id in Paypal>
+  client_secret:
+    value: <Your client_secret in Paypal>

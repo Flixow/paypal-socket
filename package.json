@@ -1,0 +1,26 @@
+{
+  "name": "Paypal-Syncano-Socket",
+  "description": "Syncano integration for Paypal",
+  "version": "0.0.1",
+  "author": "Daniel Siwek",
+  "contributors": [],
+  "bugs": {
+    "url": "https://github.com/Syncano-Community/sockets/issues"
+  },
+  "scripts": {
+    "start": ""
+  },
+  "dependencies": {
+    "axios": "0.15.3",
+    "paypal-rest-sdk": "1.7.1",
+    "syncano-client": "0.11.2"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "weather",
+    "syncano",
+    "socket"
+  ],
+  "repository": "",
+  "licenses": []
+}

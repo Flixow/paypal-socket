@@ -16,7 +16,7 @@ endpoints:
         -
           exit_code: 201
           description: Success
-          example: Hello Tyler Durden!
+          example: "{ id: 'PAY-7PB74678F47120112LC2Z4NI', intent: 'sale', state: 'created', payer: { payment_method: 'paypal' }, transactions: [ { amount: { total: '1.00', currency: 'USD' }, description: 'This is the payment description.', item_list: { items: [ { name: 'item1', sku: 'item', price: '1.00', currency: 'USD', quantity: 1 } ] }, related_resources: [] } ], create_time: '2017-02-28T15:58:45Z', links: [ { href: 'https://api.sandbox.paypal.com/v1/payments/payment/PAY-7PB74678F47120112LC2Z4NI', rel: 'self', method: 'GET' }, { href: 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7T094805F4644894L', rel: 'approval_url', method: 'REDIRECT' }, { href: 'https://api.sandbox.paypal.com/v1/payments/payment/PAY-7PB74678F47120112LC2Z4NI/execute', rel: 'execute', method: 'POST' } ], httpStatusCode: 201 }"
         -
           exit_code: 404
           description: Failed
@@ -35,7 +35,7 @@ endpoints:
         -
           exit_code: 201
           description: Success
-          example: Hello Tyler Durden!
+          example: '{"id":"PAY-09192451S05232245LC3KINY","create_time":"2017-03-01T10:36:39Z","update_time":"2017-03-01T10:36:43Z","state":"approved","intent":"sale","payer":{"payment_method":"credit_card","funding_instruments":[{"credit_card":{"type":"visa","number":"xxxxxxxxxxxx4750","expire_month":"3","expire_year":"2022","first_name":"Joe","last_name":"Shopper","billing_address":{"line1":"52 N Main ST","city":"Johnstown","state":"OH","postal_code":"43210","country_code":"US"}}}]},"transactions":[{"amount":{"total":"7.00","currency":"USD","details":{"subtotal":"5.00","tax":"1.00","shipping":"1.00"}},"description":"This is the payment transaction description.","related_resources":[{"sale":{"id":"76P51092VV1345602","create_time":"2017-03-01T10:36:39Z","update_time":"2017-03-01T10:36:43Z","amount":{"total":"7.00","currency":"USD"},"state":"completed","parent_payment":"PAY-09192451S05232245LC3KINY","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/76P51092VV1345602","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/76P51092VV1345602/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-09192451S05232245LC3KINY","rel":"parent_payment","method":"GET"}],"fmf_details":{},"processor_response":{"avs_code":"X","cvv_code":"M"}}}]}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-09192451S05232245LC3KINY","rel":"self","method":"GET"}],"httpStatusCode":201}'
         -
           exit_code: 404
           description: Failed
@@ -58,7 +58,7 @@ endpoints:
         -
           exit_code: 201
           description: Success
-          example: Hello Tyler Durden!
+          example: '{"id":"PAY-43M09054456295832LC3KJEQ","intent":"sale","state":"approved","cart":"2JE575925W041130S","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sampleEmail-buyer@gmail.com","first_name":"test","last_name":"buyer","payer_id":"4TYTMXM27QEF6","shipping_address":{"recipient_name":"test buyer","line1":"Bajkowa 2 / 5,","line2":"Case postale 12","city":"Warsaw","state":"","postal_code":"00800","country_code":"PL"},"country_code":"PL"}},"transactions":[{"amount":{"total":"1.00","currency":"USD","details":{}},"payee":{"merchant_id":"BRFC73UKGWAAJ","email":"sampleEmail@gmail.com"},"description":"This is the payment description.","item_list":{"items":[{"name":"item1","sku":"item","price":"1.00","currency":"USD","quantity":1}],"shipping_address":{"recipient_name":"test buyer","line1":"Bajkowa 2 / 5,","line2":"Case postale 12","city":"Warsaw","state":"","postal_code":"00800","country_code":"PL"}},"related_resources":[{"sale":{"id":"2SP96809CC358062H","state":"completed","amount":{"total":"1.00","currency":"USD","details":{"subtotal":"1.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"0.34","currency":"USD"},"parent_payment":"PAY-43M09054456295832LC3KJEQ","create_time":"2017-03-01T10:38:33Z","update_time":"2017-03-01T10:38:33Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/2SP96809CC358062H","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/2SP96809CC358062H/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-43M09054456295832LC3KJEQ","rel":"parent_payment","method":"GET"}]}}]}],"create_time":"2017-03-01T10:38:34Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-43M09054456295832LC3KJEQ","rel":"self","method":"GET"}],"httpStatusCode":200}'
         -
           exit_code: 404
           description: Failed
@@ -97,7 +97,7 @@ endpoints:
           description: Failed
           example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
   payout_create:
-    description: I do not know for now
+    description: Create payout with paypal
     file: scripts/payout_create.js
     parameters:
       senderBatchId:
@@ -116,7 +116,7 @@ endpoints:
           description: Failed
           example: "{ response: { name: 'INVALID_RESOURCE_ID', message: 'Requested resource ID was not found.', information_link: 'https://developer.paypal.com/webapps/developer/docs/api/#INVALID_RESOURCE_ID', debug_id: 'e72115d78f2fb', httpStatusCode: 404 }, httpStatusCode: 404 }"
   payout_get:
-    description: I do not know for now
+    description: Get all information about payout based on ID
     file: scripts/payout_get.js
     parameters:
       payoutId:
@@ -129,7 +129,7 @@ endpoints:
         -
           exit_code: 201
           description: Success
-          example: "{ id: 'PAY-64644582DN4640416LC2DLSI', state: 'approved', cart: '290534519S964102S', payer: {  payment_method: 'paypal', status: 'VERIFIED', payer_info: {  email: 'sampleEmail-buyer@gmail.com', first_name: 'test', last_name: 'buyer', payer_id: '4TYTMXM27QEF6', phone: '2269420414', country_code: 'PL' } } }"
+          example: '{"batch_header":{"payout_batch_id":"4W466DWNNJ59S","batch_status":"SUCCESS","time_created":"2017-02-28T12:49:22Z","time_completed":"2017-02-28T12:49:43Z","sender_batch_header":{"email_subject":"You have a payment","sender_batch_id":"gtmigymsoxfglj714i"},"amount":{"currency":"USD","value":"7.68"},"fees":{"currency":"USD","value":"0.0"}},"items":[{"payout_item_id":"G9FNRPPPRKMZL","transaction_status":"FAILED","payout_item_fee":{"currency":"USD","value":"0.0"},"payout_batch_id":"4W466DWNNJ59S","payout_item":{"amount":{"currency":"USD","value":"7.68"},"note":"Thank you.","receiver":"danielsiwek95@gmail.com","recipient_type":"EMAIL","sender_item_id":"item_1"},"time_processed":"2017-02-28T12:49:33Z","errors":{"name":"TRANSACTION_LIMIT_EXCEEDED","message":"Either the sender or receiver exceeded the transaction limit","information_link":"https://developer.paypal.com/docs/api/payments.payouts-batch/#errors"},"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payouts-item/G9FNRPPPRKMZL","rel":"item","method":"GET"}]}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payouts/4W466DWNNJ59S","rel":"self","method":"GET"}],"httpStatusCode":200}'
         -
           exit_code: 404
           description: Failed

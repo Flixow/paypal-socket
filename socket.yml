@@ -1,5 +1,6 @@
 name: Paypal
 description: Socket for PayPal
+version: 0.0.1
 
 endpoints:
   payment_create_with_paypal:

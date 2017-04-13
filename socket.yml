@@ -1,6 +1,7 @@
-name: Paypal
+name: paypal
 description: Socket for PayPal
-version: 0.0.1
+version: 0.0.2
+url: https://github.com/Flixow/syncano-socket-paypal.git
 
 endpoints:
   payment_create_with_paypal:

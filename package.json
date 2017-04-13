@@ -3,6 +3,10 @@
   "description": "Syncano integration for Paypal",
   "version": "0.0.1",
   "author": "Daniel Siwek",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Flixow/syncano-socket-paypal.git"
+  },
   "contributors": [],
   "bugs": {
     "url": "https://github.com/Syncano-Community/sockets/issues"
@@ -11,7 +15,6 @@
     "start": ""
   },
   "dependencies": {
-    "axios": "0.15.3",
     "paypal-rest-sdk": "1.7.1",
     "syncano-client": "0.11.2"
   },
